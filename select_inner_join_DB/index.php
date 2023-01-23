@@ -21,13 +21,13 @@ $pdo = new PDO('mysql:host=localhost;dbname=modulo8', 'root', '');
      echo '<hr>';
  }*/
 
-$sql = $pdo->prepare("SELECT * FROM categorias");
-$sql->execute();
+//$sql = $pdo->prepare("SELECT * FROM categorias");
+//$sql->execute();
+//
+////fetchAll -> vai pegar todas as informações
+//$info = $sql->fetchAll();
 
-//fetchAll -> vai pegar todas as informações
-$info = $sql->fetchAll();
-
-foreach ($info as $key => $value) {
+/*foreach ($info as $key => $value) {
     $categorias_id = $value['id'];
     echo 'Exibindo posts de: '.$value['nome'];
     echo '<br/>';
@@ -40,5 +40,12 @@ foreach ($info as $key => $value) {
         echo 'Notícia'.$value['conteudo'];
         echo '<hr>';
     }
-}
+}*/
+
+$sql = $pdo->prepare("SELECT `posts`.*,`categorias`.*,`posts`.`id` AS `posts_id` FROM `posts` INNER JOIN `categorias` ON `posts`.`categoria_id` = `categorias`.`id`");
+$sql->execute();
+$info = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+echo "<pre>";
+print_r($info);
 ?>
