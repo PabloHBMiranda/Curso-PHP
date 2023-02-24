@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Virtual</title>
+</head>
+<body>
+<div id="produtos"></div>
+<div id="carrinho"></div>
+<div></div>
+
+<script>
+    const items = [
+        {
+            id: 0,
+            nome: 'camiseta',
+            img: 'camiseta.png',
+            quantidade: 0
+        },
+        {
+            id: 1,
+            nome: 'short',
+            img: 'camiseta.png',
+            quantidade: 0
+        },
+        {
+            id: 2,
+            nome: 'sapato',
+            img: 'camiseta.png',
+            quantidade: 0
+        },
+    ]
+
+    inicializarLoja = () => {
+        var containerProdutos = document.getElementById('produtos');
+        items.map((val) =>{
+          containerProdutos.innerHTML+=`
+
+                <div class="produto-single">
+                    <img src="`+val.img+`"/>
+                    <p>`+val.nome+`</p>
+                    <a href="">Adicionar Ao Carrinho</a>
+                </div>
+
+          `;
+        })
+    }
+
+    inicializarLoja();
+
+</script>
+</body>
+</html>
